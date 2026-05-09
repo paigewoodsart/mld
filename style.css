@@ -1426,7 +1426,7 @@ blockquote cite {
 
   .philosophy {
     grid-template-columns: 8px 1fr;
-    grid-template-rows: 55vw auto;
+    grid-template-rows: 69vw auto;
   }
 
   .philosophy-photo {
