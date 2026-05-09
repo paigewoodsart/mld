@@ -62,6 +62,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-h);
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -240,7 +241,7 @@ p           { text-wrap: pretty; }
   width: 100%;
   height: 128%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center;
   will-change: transform;
   display: block;
 }
@@ -642,7 +643,13 @@ p           { text-wrap: pretty; }
   margin-bottom: 14px;
 }
 
-.philosophy-text .btn-primary { margin-top: 1.6rem; display: inline-block; }
+.philosophy-text .btn-primary {
+  margin-top: 1.6rem;
+  display: inline-block;
+  padding: 9px 16px;
+  font-size: 0.72rem;
+  width: fit-content;
+}
 
 /* ----------------------------------------
    SPECIALTIES
@@ -1260,17 +1267,55 @@ blockquote cite {
    FOOTER
    ---------------------------------------- */
 .footer {
-  background: var(--mauve);
-  padding: clamp(48px, 6vw, 72px) var(--pad-x) clamp(28px, 4vw, 40px);
+  position: relative;
+  overflow: hidden;
+  background: var(--lavender);
+  padding: clamp(24px, 3vw, 36px) var(--pad-x) clamp(14px, 2vw, 20px);
+}
+
+.footer-bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+  filter: blur(1px);
+  pointer-events: none;
+}
+
+.footer-bubble-1 {
+  width: 260px;
+  height: 260px;
+  top: -80px;
+  right: 5%;
+  animation: floatA 16s ease-in-out infinite;
+}
+
+.footer-bubble-2 {
+  width: 160px;
+  height: 160px;
+  bottom: -50px;
+  left: 8%;
+  background: rgba(255, 255, 255, 0.05);
+  animation: floatB 20s ease-in-out infinite;
+}
+
+.footer-bubble-3 {
+  width: 100px;
+  height: 100px;
+  top: 20%;
+  left: 35%;
+  background: rgba(255, 255, 255, 0.04);
+  animation: floatC 24s ease-in-out infinite;
 }
 
 .footer-inner {
+  position: relative;
+  z-index: 1;
   max-width: var(--container);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: clamp(32px, 6vw, 80px);
-  padding-bottom: clamp(36px, 5vw, 56px);
+  gap: clamp(20px, 4vw, 56px);
+  padding-bottom: clamp(18px, 2.5vw, 28px);
   border-bottom: 1px solid rgba(217, 206, 199, 0.14);
 }
 
@@ -1325,8 +1370,10 @@ blockquote cite {
 }
 
 .footer-bottom {
+  position: relative;
+  z-index: 1;
   max-width: var(--container);
-  margin: clamp(24px, 3vw, 36px) auto 0;
+  margin: clamp(12px, 1.5vw, 18px) auto 0;
 }
 
 .footer-bottom p {

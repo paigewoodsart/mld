@@ -75,9 +75,9 @@ const parallaxTargets = Array.from(document.querySelectorAll('.parallax-img')).m
 function applyParallax() {
   parallaxTargets.forEach(({ wrap, img, speed }) => {
     if (!wrap) return;
-    const rect = wrap.getBoundingClientRect();
+    const rect   = wrap.getBoundingClientRect();
     if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-    const center  = rect.top + rect.height / 2 - window.innerHeight / 2;
+    const center = rect.top + rect.height / 2 - window.innerHeight / 2;
     img.style.transform = `translateY(${center * speed}px)`;
   });
 }
