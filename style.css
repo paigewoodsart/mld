@@ -1462,21 +1462,22 @@ blockquote cite {
    RESPONSIVE — mobile
    ---------------------------------------- */
 @media (max-width: 680px) {
-  /* Nav moves to top on mobile */
+  /* Nav moves to top on mobile, 40% shorter */
   .nav {
     top: 0;
     bottom: auto;
+    height: calc(var(--nav-h) * 0.6);
   }
 
-  /* Nav stays at top even after sticky kicks in */
   .nav.sticky {
     top: 0;
     bottom: auto;
+    height: calc(var(--nav-h) * 0.6);
   }
 
   /* Hero — full-bleed photo, text overlaid */
   .hero-text-panel {
-    padding: 48px 24px 28px !important;
+    padding: 36px 24px 28px !important;
     background: linear-gradient(
       to top,
       rgba(249, 246, 242, 0.97) 0%,
