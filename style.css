@@ -1523,8 +1523,11 @@ blockquote cite {
   }
 
   .disclaimer p {
-    font-size: 0.52rem;
-    line-height: 1.25;
+    font-size: 0.55rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .nav-links    { display: none; }
