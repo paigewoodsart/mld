@@ -1519,7 +1519,12 @@ blockquote cite {
     left: 0;
     right: 0;
     z-index: 998;
-    /* removed from normal flow so no gap at top of page */
+    padding: 4px 12px;
+  }
+
+  .disclaimer p {
+    font-size: 0.52rem;
+    line-height: 1.25;
   }
 
   .nav-links    { display: none; }
