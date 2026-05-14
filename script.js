@@ -146,6 +146,66 @@ dots.forEach((dot, idx) => {
 
 if (testimonials.length) startAuto();
 
+// Credits poster carousel
+(function () {
+  const track = document.getElementById('posterTrack');
+  if (!track) return;
+
+  // Duplicate slides for seamless infinite loop
+  const origSlides = Array.from(track.children);
+  origSlides.forEach(s => track.appendChild(s.cloneNode(true)));
+
+  const GAP = 16;
+  const SPEED = 0.45; // px per frame
+  let pos = 0;
+  let paused = false;
+  let rafId;
+
+  function slideW() {
+    const s = track.firstElementChild;
+    return s ? s.offsetWidth + GAP : 204;
+  }
+
+  function loopPos() {
+    const total = origSlides.length * slideW();
+    if (pos >= total) pos -= total;
+    if (pos < 0) pos += total;
+  }
+
+  function tick() {
+    if (!paused) {
+      pos += SPEED;
+      loopPos();
+      track.style.transform = `translateX(-${pos}px)`;
+    }
+    rafId = requestAnimationFrame(tick);
+  }
+
+  rafId = requestAnimationFrame(tick);
+
+  function jump(delta) {
+    paused = true;
+    cancelAnimationFrame(rafId);
+    pos += delta * slideW();
+    loopPos();
+    track.style.transition = 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)';
+    track.style.transform = `translateX(-${pos}px)`;
+    track.addEventListener('transitionend', function resume() {
+      track.removeEventListener('transitionend', resume);
+      track.style.transition = '';
+      paused = false;
+      rafId = requestAnimationFrame(tick);
+    }, { once: true });
+  }
+
+  document.querySelector('.poster-nav-prev')?.addEventListener('click', () => jump(-1));
+  document.querySelector('.poster-nav-next')?.addEventListener('click', () => jump(1));
+
+  const viewport = track.closest('.poster-carousel-viewport');
+  viewport?.addEventListener('mouseenter', () => { paused = true; });
+  viewport?.addEventListener('mouseleave', () => { paused = false; });
+})();
+
 // Contact form
 const form = document.querySelector('.contact-form');
 form?.addEventListener('submit', e => {

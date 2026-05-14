@@ -511,9 +511,9 @@ p           { text-wrap: pretty; }
 }
 
 .hero-eyebrow {
-  font-size: 0.62rem;
+  font-size: 0.85rem;
   font-weight: 400;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--pink-deep);
   margin-bottom: 20px;
@@ -827,6 +827,7 @@ p           { text-wrap: pretty; }
 .process {
   background: var(--ivory);
   padding: var(--pad-section) var(--pad-x);
+  overflow-x: clip;
 }
 
 .process-inner {
@@ -900,6 +901,78 @@ p           { text-wrap: pretty; }
   height: 7px;
   border-radius: 50%;
   background: var(--pink-pale);
+}
+
+/* ----------------------------------------
+   CREDITS POSTER CAROUSEL
+   ---------------------------------------- */
+.poster-carousel-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: clamp(40px, 6vw, 64px);
+  /* break out of process-inner max-width and section padding */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  padding: 0 clamp(16px, 3vw, 48px);
+  box-sizing: border-box;
+}
+
+.poster-carousel-viewport {
+  flex: 1;
+  overflow: hidden;
+}
+
+.poster-track {
+  display: flex;
+  gap: 16px;
+  will-change: transform;
+}
+
+.poster-slide {
+  flex-shrink: 0;
+  width: clamp(162px, 16vw, 238px);
+  aspect-ratio: 2 / 3;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--sand);
+  box-shadow: 0 4px 18px rgba(75, 67, 64, 0.10);
+}
+
+.poster-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.poster-slide:hover img {
+  transform: scale(1.04);
+}
+
+.poster-nav {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--taupe);
+  background: var(--ivory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--charcoal);
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+}
+
+.poster-nav:hover {
+  border-color: var(--lavender);
+  background: rgba(194, 174, 224, 0.12);
+  transform: scale(1.08);
 }
 
 /* ----------------------------------------
